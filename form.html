@@ -1,0 +1,142 @@
+<html class="vee">
+<title>Mzamomtsha Primary School </title>
+<link rel="stylesheet" href="style.css">
+<div class="syz">
+<div id="formFeedback">
+    <h2>Thank you!</h2>
+    <p>Thank you for your pledge to donate. Someone from our school will contact you in a due time.</p>
+    <a href="#" id="makeAnotherDonation">Would like to make another donation?</a>
+</div>
+<form action="" id="donationForm">
+    <ul class="form-style-1">
+        <li>
+            <label>Full Name <span class="required">*</span></label><input type="text" id="Name" name="Name" class="field-divided" placeholder="First" /> <input type="text" id="surName" name="surName" class="field-divided" placeholder="Last" />
+            <div id="NameFeedback" class="formElementFeedback"></div>
+          		   <div id="surNameFeedback" class="formElementFeedback"></div>
+        </li>
+        <li>
+            <label>Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" class="field-long" />
+            <div id="emailFeedback" class="formElementFeedback"></div>
+        </li>
+        
+        <li><label>Phone Number <span class="required">*</span></label><input type="text" id="phoneNumber" name="phoneNumber" class="field-divided" placeholder="########" />
+            
+            <label> Donation Amount </label>
+        <input type="text" name="field3" class="field-divided" placeholder="Donation Amount" /></li>
+        
+        <li>
+            <label>Donate As:</label>
+            <select name="field4" class="field-select">
+            <option value="sponsor">Sponsor</option>
+            <option value="General">General</option>
+            </select>
+        </li>
+        <li>
+            <label>Do you have anything to comment regarding your donation?<span class="required">*</span></label>
+            <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+        </li>
+        <li>
+            <input type="button" id="donateButton" value="Donate"/>
+        </li>
+    </ul>
+</div>
+</form>
+<script type="text/javascript">
+    
+    var formFeedback = document.getElementById("formFeedback");
+    var donationForm = document.getElementById("donationForm");
+    var makeAnotherDonation = document.getElementById("makeAnotherDonation");
+
+    var donateButton = document.getElementById("donateButton");
+
+    donateButton.addEventListener("click", function(){
+        // Form validation
+
+        // Full name
+        var Name = document.getElementById("Name");
+
+        var NameFeedback = document.getElementById("NameFeedback");
+
+        if(Name.value.trim().length == 0){
+            NameFeedback.innerHTML = "Please enter your first name.";
+            NameFeedback.style.display = "block";
+        }else if(Name.value.trim().length < 2 || Name.value.trim().length > 32){
+            NameFeedback.innerHTML = "A valid first name should contain at least 2 letters but up to 32 letters.";
+            NameFeedback.style.display = "block";
+        }else if(/[^a-zA-Z ]/.test(Name.value.trim())){
+            NameFeedback.innerHTML = "A valid first name should only contain letters and spaces.";
+            NameFeedback.style.display = "block";               
+        }else if(!/^[a-zA-Z]{2,32}( [a-zA-Z]{2,32})*$/.test(Name.value.trim())){
+            NameFeedback.innerHTML = "It looks like this first name is not properly formated.";
+            NameFeedback.style.display = "block"; 
+        }else{
+            NameFeedback.style.display = "none";
+        }
+        
+        var surName = document.getElementById("surName");
+
+        var surNameFeedback = document.getElementById("surNameFeedback");
+
+        if(surName.value.trim().length == 0){
+            surNameFeedback.innerHTML = "Please enter your surname.0.";
+            surNameFeedback.style.display = "block";
+        }else if(surName.value.trim().length < 2 || surName.value.trim().length > 32){
+            surNameFeedback.innerHTML = "A valid  surname should contain at least 2 letters but up to 32 letters.";
+            surNameFeedback.style.display = "block";
+        }else if(/[^a-zA-Z ]/.test(surName.value.trim())){
+            surNameFeedback.innerHTML = "A valid surname should only contain letters and spaces.";
+            surNameFeedback.style.display = "block";               
+        }else if(!/^[a-zA-Z]{2,32}( [a-zA-Z]{2,32})*$/.test(surName.value.trim())){
+            surNameFeedback.innerHTML = "It looks like this surname is not properly formated.";
+            surNameFeedback.style.display = "block"; 
+        }else{
+            surNameFeedback.style.display = "none";
+        }
+        
+        var email = document.getElementById("email");
+
+        var emailFeedback = document.getElementById("emailFeedback");
+
+        if(email.value.length == 0){
+            emailFeedback.innerHTML = "Please enter your email.0.";
+            emailFeedback.style.display = "block";
+        }else if(email.value.length < 10 || email.value.length > 32){
+            emailFeedback.innerHTML = "A valid  email should contain at least @***.com/org/org.za";
+            emailFeedback.style.display = "block";
+        }else if(/[^a-z@ ]/.test(email.value)){
+            emailFeedback.innerHTML = "A valid  email should contain at least @***.com/org/org.za";
+            emailFeedback.style.display = "block";               
+        }else if(!/^[a-zA-Z]{10,32}( [a-zA-Z]{10,32})*$/.test(surName.value)){
+    emailFeedback.innerHTML = "It looks like this email is not properly formated.";
+    emailFeedback.style.display = "block"; 
+}else{
+            emailFeedback.style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+        
+        formFeedback.style.display = "block";
+        donationForm.style.display = "none";
+        donationForm.reset();
+        
+
+    }, false);
+
+    makeAnotherDonation.addEventListener("click", function(e){
+        e.preventDefault();
+        formFeedback.style.display = "none";
+        donationForm.style.display = "block";
+    }, false);
+
+
+</script>
+</html>
